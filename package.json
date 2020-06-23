@@ -1,16 +1,15 @@
 {
   "name": "nodeflake",
   "description": "Unique ID server for No-SQL environments, based on Twitter's SnowFlake",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "David LeMieux",
   "contributors": [],
   "repository": {
     "type": "git",
     "url": "http://github.com/lemieuxster/nodeflake.git"
   },
-  "engine": [ "node >=0.4.8" ],
-  "dependencies" : {
-      "socket.io":"0.7.7"
+  "engines": {
+    "node": ">=12.6.0"
   },
-  "main": "./"
+  "main": "./nodeflake.js"
 }

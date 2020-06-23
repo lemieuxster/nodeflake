@@ -1,12 +1,42 @@
-var idworker = require("../lib/idworker.js");
-var worker = idworker.getIdWorker(0, 0);
+const idworker = require("../lib/idworker.js");
+const worker = idworker.getIdWorker(0, 0);
+const { performance } = require('perf_hooks');
 
-var startTimer = (new Date).getTime();
+const testTiming = () => {
+  console.log("Timing Test - generating 1 million IDs");
 
-for (var i = 0; i < 2000; ++i) {
-    var id = worker.getId("test agent");
+  const startTimer = performance.now();
+
+  for (var i = 0; i < 1000000; ++i) {
+    worker.getId("test agent");
+  }
+
+  var endTimer = performance.now();
+
+  console.log(endTimer - startTimer, "milliseconds");
 }
 
-var endTimer = (new Date).getTime();
+const testUniqueness = () => {
+  console.log("Timing Test - generating 1 million IDs and testing for uniqueness");
 
-console.log(endTimer - startTimer, "milliseconds");
+
+  const startTimer = performance.now();
+
+  const idSet = new Set();
+  for (var i = 0; i < 1000000; ++i) {
+    const id = worker.getId("test agent");
+    if (idSet.has(id)) {
+      throw new Error("DUPLICATE ID FOUND");
+    }
+
+    idSet.add(id);
+  }
+
+  var endTimer = performance.now();
+  console.log("Timing Test - generating 1 million IDs");
+  console.log("generated", idSet.size, "unique ids");
+  console.log(endTimer - startTimer, "milliseconds");
+}
+
+testTiming();
+testUniqueness();
