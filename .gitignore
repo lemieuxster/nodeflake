@@ -1,3 +1,4 @@
 #ignore npm packages
 node_modules/
+.idea/
 
