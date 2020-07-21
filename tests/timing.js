@@ -39,7 +39,7 @@ const testUniqueness = () => {
 }
 
 const testMultiServer = () => {
-  console.log("Uniqueness Test - generating 1 million IDs with 5 workers");
+  console.log("Uniqueness Test - generating 1 million IDs with 6 workers");
 
   const worker1 = idworker.getIdWorker(1, 0);
   const worker2 = idworker.getIdWorker(2, 0);

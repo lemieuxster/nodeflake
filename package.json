@@ -8,6 +8,10 @@
     "type": "git",
     "url": "http://github.com/lemieuxster/nodeflake.git"
   },
+  "scripts": {
+    "run": "node nodeflake.js",
+    "test": "node ./tests/timing.js"
+  },
   "engines": {
     "node": ">=12.6.0"
   },
